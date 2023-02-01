@@ -17,5 +17,5 @@
 </div>
 <div class="row">
   <div class="col-6 py-5">
-    <p>Pas de compte ? <a href="register.php">S'inscrire !</a></p>
+    <p>Pas de compte ? <a href="signup.php">S'inscrire !</a></p>
 </div>

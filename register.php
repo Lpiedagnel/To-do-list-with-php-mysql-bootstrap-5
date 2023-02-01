@@ -1,5 +1,5 @@
 <?php require_once 'functions/functions.php'; ?>
-<?= createHeader('S\'inscrire !', 'S\'inscrire à la To-do-List pour voir et ajouter des tâches !') ?>
+<?= createHeader('Enregistrement', 'Votre compte est crée !') ?>
 <?php require 'elements/navbar.php'; ?>
-<?php require 'elements/signup_form.php'; ?>
+<?php require 'elements/signup_confirmation.php'; ?>
 <?php require 'elements/footer.php'; ?>
