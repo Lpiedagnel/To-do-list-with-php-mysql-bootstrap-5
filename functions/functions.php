@@ -19,21 +19,13 @@ function createHeader(string $title, string $description): string {
 }
 
 // Create Nav Item
-function createNavItem(string $link, string $title, string $linkClass = ''): string {
-    //  Check if server link = link
-    $class = 'nav-item';
-    /*
-    $ifCurrentUrl = str_contains($_SERVER['SCRIPT_NAME'], $link);
-    if ($ifCurrentUrl) {
-        $class .= ' active';
-    };
-    */
-    // Generate HTML
+function createNavItem(string $link, string $title, string $linkClass = ''): string {   
+    $linkClass = ($_SERVER['SCRIPT_NAME'] == $link) ? $linkClass . ' active' : $linkClass;
     $html = 
     '
-        <li class="' . $class . '">    
-            <a class="' . $linkClass . '" href="' . $link . '">' . $title .'</a> 
-        </li>
+    <li class="nav-item">
+    <a class="' . $linkClass . '" href="' . $link . '">' . $title .'</a> 
+    </li>
     ';
     return $html;
 };
@@ -41,7 +33,7 @@ function createNavItem(string $link, string $title, string $linkClass = ''): str
 // Create Menu
 function createMenu(string $linkClass = '') {
     return
-    createNavItem('./index.php', 'Accueil', $linkClass) .
-    createNavItem('./add_task.php', 'Ajouter une tâche', $linkClass) .
-    createNavItem('./connexion.php', 'Connexion', $linkClass);
+    createNavItem('/To-do-list-with-php-mysql-bootstrap-5/index.php', 'Accueil', $linkClass) .
+    createNavItem('/To-do-list-with-php-mysql-bootstrap-5/add_task.php', 'Ajouter une tâche', $linkClass) .
+    createNavItem('/To-do-list-with-php-mysql-bootstrap-5/connexion.php', 'Connexion', $linkClass);
 }
