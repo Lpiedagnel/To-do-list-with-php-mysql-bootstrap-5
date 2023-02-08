@@ -7,8 +7,9 @@ if (isset($_POST)) {
 
     if (!empty($name) && !empty($email) && !empty($password)) {
 
+        $password = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
         $query = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
-        $stmt = $msqli->prepare($query);
+        $stmt = $db->prepare($query);
         $stmt->bind_param("sss", $name, $email, $password);
         $result = $stmt->execute();
 

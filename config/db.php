@@ -2,10 +2,10 @@
 include('config.php');
 
 // Create connection
-$msqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 // Check connection
-if ($msqli->connect_error) {
-    die("Connection failed: " . $msqli->$connect_error);
+if ($db->connect_error) {
+    die("Connection failed: " . $db->$connect_error);
 }
 ?>
