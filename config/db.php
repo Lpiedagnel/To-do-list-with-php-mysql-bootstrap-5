@@ -1,11 +1,14 @@
 <?php
-include('config.php');
+require_once('config/config.php');
 
-// Create connection
-$db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-
-// Check connection
-if ($db->connect_error) {
-    die("Connection failed: " . $db->$connect_error);
+function connect_to_database() {
+    try {
+        $conn = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
+        $isConnected = true;
+        echo 'Connected to the database!';
+    
+    } catch (PDOException $e) {
+        echo 'Error to connected to the database: ' . $e->getMessage();
+        die();
+    }
 }
-?>
