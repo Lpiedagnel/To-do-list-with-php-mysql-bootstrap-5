@@ -1,4 +1,3 @@
-<?php require_once 'config/db.php' ?>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container">
@@ -15,4 +14,3 @@
 </nav>
 <!-- Start container -->
 <div class="container">
-  <?php connect_to_database();  ?>
