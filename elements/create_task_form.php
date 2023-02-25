@@ -1,11 +1,15 @@
-<form class="col-6 my-3">
+<form class="col-6 my-3" action="task_validation.php" method="POST">
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Entrez votre tâche</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="task_name" class="form-label">Entrez votre tâche</label>
+    <input type="text" class="form-control" name="task_name" required>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Date</label>
-    <input type="date" class="form-control" id="exampleInputPassword1">
+    <label for="person" class="form-label">Personne(s) en charge</label>
+    <input type="text" class="form-control" name="person">
+  </div>
+  <div class="mb-3">
+    <label for="date" class="form-label">Date</label>
+    <input type="date" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
   </div>
   <button type="submit" class="btn btn-primary">Créer la tâche</button>
 </form>
