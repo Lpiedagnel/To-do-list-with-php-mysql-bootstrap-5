@@ -1,5 +1,5 @@
 <div class="row">
-  <form class="my-3 col-6" action="signup_validation.php" method="POST">
+  <form class="my-3 col-6" action="signup_validation.php" method="POST" id="register-form">
     <div class="mb-3">
       <label for="lastName" class="form-label">Nom</label>
       <input type="text" name="lastName" class="form-control"required>
@@ -24,7 +24,7 @@
       <label for="passwordConfirmation" class="form-label">Confirmer mot de passe</label>
       <input type="password" name="passwordConfirmation" class="form-control" id="password-input-confirmation" required>
     </div>
-    <button type="submit" name="submit" class="btn btn-primary" id="submit-button" required>S'inscrire'</button>
+    <button type="submit" name="submitBtn" class="btn btn-primary" required>S'inscrire'</button>
     <div class="error mt-1" id="error"></div>
   </form>
 </div>
