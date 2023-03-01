@@ -10,13 +10,15 @@ if
     (isset($_POST['password'])) &&
     (isset($_POST['passwordConfirmation']))
     ) {
+    // Hash
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT, ['cost' => 12]);
     // Get data
     $data = [
         'first_name' => htmlspecialchars($_POST['firstName']),
         'last_name' => htmlspecialchars($_POST['lastName']),
         'email' => htmlspecialchars($_POST['email']),
         'job' => $_POST['job'] ? htmlspecialchars($_POST['job']) : null,
-        'password' => htmlspecialchars($_POST['password'])
+        'password' => $password
     ];
     // Store to database
     $query = "INSERT INTO users (first_name, last_name, email, job, password) VALUES (:first_name, :last_name, :email, :job, :password)";

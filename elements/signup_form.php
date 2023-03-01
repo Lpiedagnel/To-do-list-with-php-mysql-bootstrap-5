@@ -18,16 +18,19 @@
     </div>
     <div class="mb-3">
       <label for="password" class="form-label">Mot de passe</label>
-      <input type="password" name="password" class="form-control"required>
+      <input type="password" name="password" class="form-control" id="password-input" required>
     </div>
     <div class="mb-3">
       <label for="passwordConfirmation" class="form-label">Confirmer mot de passe</label>
-      <input type="password" name="passwordConfirmation" class="form-control"required>
+      <input type="password" name="passwordConfirmation" class="form-control" id="password-input-confirmation" required>
     </div>
-    <button type="submit" name="submit" class="btn btn-primary" required>S'inscrire'</button>
+    <button type="submit" name="submit" class="btn btn-primary" id="submit-button" required>S'inscrire'</button>
+    <div class="error mt-1" id="error"></div>
   </form>
 </div>
 <div class="row">
   <div class="col-6 py-5">
     <p>Déjà un compte ? <a href="connexion.php">Se connecter !</a></p>
 </div>
+<!-- JS -->
+<script src="js/auth.js"></script>
