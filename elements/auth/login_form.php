@@ -8,10 +8,6 @@
       <label for="password" class="form-label">Mot de passe</label>
       <input type="password" class="form-control" name="password">
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input">
-      <label class="form-check-label" name="remember">Maintenir la connexion</label>
-    </div>
     <button type="submit" class="btn btn-primary">Se connecter</button>
   </form>
 </div>

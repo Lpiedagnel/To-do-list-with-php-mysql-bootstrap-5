@@ -21,6 +21,7 @@ if (!$error) {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['first_name'] = $user['first_name'];
         $_SESSION['last_name'] = $user['last_name'];
+        $_SESSION['is_connected'] = true;
         header("location: index.php");
         exit;
     }

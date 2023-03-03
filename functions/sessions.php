@@ -12,3 +12,9 @@ function getName() {
         return $name;
     }
 }
+
+function destroySession() {
+    session_destroy();
+    $html = '<p class="my-5">Vous avez été déconnecté. <a href="index.php">Retourner à l\'accueil.</a></p>';
+    return $html;
+}
