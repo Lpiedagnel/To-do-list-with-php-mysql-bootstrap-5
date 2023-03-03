@@ -20,7 +20,8 @@ if (!$error) {
     $row = $result->fetch();
     print_r($row['password']);
     if ($row && password_verify($password, $row['password'])) {
-        $email = $row;
+        $_SESSION['first_name'] = $row['first_name'];
+        $_SESSION['last_name'] = $row['last_name'];
         header("location: index.php");
         exit;
     }

@@ -9,6 +9,9 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <?= createMenu('nav-link') ?>
       </ul>
+      <span class="navbar-text">
+        <?= getName() ?>
+      </span>
     </div>
   </div>
 </nav>
