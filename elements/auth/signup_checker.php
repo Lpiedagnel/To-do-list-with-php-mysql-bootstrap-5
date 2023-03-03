@@ -1,5 +1,5 @@
 <?php
-include_once('config/db.php');
+include_once('utils/db.php');
 $pdo = connect_to_database();
 
 // Store input into variables
@@ -54,7 +54,10 @@ if (!$error) {
         $query = "INSERT INTO users (first_name, last_name, email, job, password) VALUES (:first_name, :last_name, :email, :job, :password)";
         $statement = $pdo->prepare($query);
         $statement->execute($data);
-        echo '<p class="my-5">Vous êtes enregistré(e) !</p>';
+        echo '<p class="my-5">Vous êtes enregistré(e) ! <br> Vous allez être redirigé à la liste des tâches.</p>';
+
+        //Back to index
+        header('Location: index.php');
     } 
 } else {
     echo 'Une erreur s\'est produite : ' . $error;

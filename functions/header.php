@@ -1,7 +1,11 @@
 <?php
+
+require_once('functions/sessions.php');
+
 // Generate Header
 function createHeader(string $title, string $description): string {
     $header = 
+    getSession() .
     '
         <!doctype html>
         <html lang="fr">

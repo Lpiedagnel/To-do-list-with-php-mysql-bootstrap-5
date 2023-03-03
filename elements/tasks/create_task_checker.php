@@ -1,5 +1,5 @@
 <?php
-include_once('config/db.php');
+include_once('utils/db.php');
 $pdo = connect_to_database();
 if (isset($_POST) && (isset($_POST['task_name'])) && (isset($_POST['date']))) {
     // Get data
@@ -9,7 +9,7 @@ if (isset($_POST) && (isset($_POST['task_name'])) && (isset($_POST['date']))) {
         'date' => htmlspecialchars($_POST['date'])
     ];
     // Store to database
-    $query = "INSERT INTO task (person_in_charge, task_name, date) VALUES (:person_in_charge, :task_name, :date)";
+    $query = "INSERT INTO tasks (person_in_charge, task_name, date) VALUES (:person_in_charge, :task_name, :date)";
     $statement = $pdo->prepare($query);
     $statement->execute($data);
     echo '<p class="my-5">Votre tâche est enregistrée</p>';

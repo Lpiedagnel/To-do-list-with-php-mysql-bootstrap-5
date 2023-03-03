@@ -1,7 +1,7 @@
 <?php
-require_once('config/db.php');
+require_once('utils/db.php');
 $db = connect_to_database();
-$query = $db->query("SELECT * FROM `task`")->fetchAll();
+$query = $db->query("SELECT * FROM `tasks`")->fetchAll();
 // Date function
 
 ?>

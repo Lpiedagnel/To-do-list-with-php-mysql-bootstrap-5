@@ -1,5 +1,5 @@
 <div class="row">
-  <form class="my-3 col-6" action="login.php" method="post">
+  <form class="my-3 col-6" action="login_validation.php" method="POST">
     <div class="mb-3">
       <label for="email" class="form-label">Adresse Email</label>
       <input type="email" class="form-control" name="email">
