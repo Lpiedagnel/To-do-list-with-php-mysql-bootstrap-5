@@ -21,7 +21,11 @@ $query = $db->query("SELECT * FROM `tasks`")->fetchAll();
   <div id="collapse-{$i}" class="accordion-collapse collapse" aria-labelledby="heading-{$i}" data-bs-parent="#accordionExample">
     <div class="accordion-body">
       <ul>
-          <li><strong>{$row['person_in_charge']} :</strong> {$row['task_name']} <a href="#" class="mx-3 text-success"><i class="fa-solid fa-check"></i></a><a class="mx-3 text-danger" href="#"><i class="fa-solid fa-trash"></i></a></li>
+          <li><strong>{$row['person_in_charge']} :</strong> {$row['task_name']} 
+            <a href="#" class="mx-2 text-success"><i class="fa-solid fa-check"></i></a>
+            <a href="#" class="mx-2 text-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a class="mx-2 text-danger" href="delete_task.php?id={$row['id']}"><i class="fa-solid fa-trash"></i></a>
+          </li>
       </ul>
     </div>
   </div>
@@ -29,23 +33,4 @@ $query = $db->query("SELECT * FROM `tasks`")->fetchAll();
 TASK;
     }
 ?>
-
-  <!--
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Lundi 16 Janvier 2023
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <ul>
-              <li><strong>Tâche 1 :</strong> 10H - 12H <a href="#" class="mx-3 text-success"><i class="fa-solid fa-check"></i></a><a class="mx-3 text-danger" href="#"><i class="fa-solid fa-trash"></i></a></li>
-              <li><strong>Tâche 2 :</strong> 14H - 16H <a href="#" class="mx-3 text-success"><i class="fa-solid fa-check"></i></a><a class="mx-3 text-danger" href="#"><i class="fa-solid fa-trash"></i></a></li>
-              <li><strong>Tâche 3 :</strong> 16H - 18H <a href="#" class="mx-3 text-success"><i class="fa-solid fa-check"></i></a><a class="mx-3 text-danger" href="#"><i class="fa-solid fa-trash"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-   -->
 </div>
