@@ -24,8 +24,7 @@ if (!$error) {
         $_SESSION['is_connected'] = true;
         header("location: index.php");
         exit;
-    }
-    else{
+    } else {
         $error = 'L\'utilisateur n\'a pas été trouvé. Vérifiez le mot de passe ou l\'adresse mail.';
         echo '<p class="my-5">' . $error . '</p>';
     }

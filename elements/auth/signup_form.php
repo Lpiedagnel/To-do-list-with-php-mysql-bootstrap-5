@@ -2,15 +2,15 @@
   <form class="my-3 col-6" action="signup_validation.php" method="POST" id="register-form">
     <div class="mb-3">
       <label for="lastName" class="form-label">Nom</label>
-      <input type="text" name="lastName" class="form-control"required>
+      <input type="text" name="lastName" class="form-control" required>
     </div>
     <div class="mb-3">
       <label for="firstName" class="form-label">Prénom</label>
-      <input type="text" name="firstName" class="form-control"required>
+      <input type="text" name="firstName" class="form-control" required>
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
-      <input type="email" name="email" class="form-control"required>
+      <input type="email" name="email" class="form-control" required>
     </div>
     <div class="mb-3">
       <label for="job" class="form-label">Fonction dans l'entreprise</label>
@@ -31,4 +31,4 @@
 <div class="row">
   <div class="col-6 py-5">
     <p>Déjà un compte ? <a href="connexion.php">Se connecter !</a></p>
-</div>
+  </div>

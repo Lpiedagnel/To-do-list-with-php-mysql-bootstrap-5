@@ -1,5 +1,6 @@
 <?php
-include_once('utils/db.php');
+
+include_once 'utils/db.php';
 $pdo = connect_to_database();
 
 $error = null;
@@ -9,8 +10,8 @@ if (!isset($_GET['id']) || (!is_numeric($_GET['id']))) {
     $error = "La tâche n'existe pas.";
 }
 
-if ((!isset($_SESSION['is_connected']))) {
-    $error = "Vous devez être connecté(e) pour supprimer une tâche.";
+if (!isset($_SESSION['is_connected'])) {
+    $error = 'Vous devez être connecté(e) pour supprimer une tâche.';
 }
 
 if (!$error) {
@@ -19,7 +20,7 @@ if (!$error) {
     $query = "DELETE FROM tasks WHERE id = $id";
     $statement = $pdo->prepare($query);
     $statement->execute();
-    echo 'La tâche a bien été supprimée ! ' . $link;
+    echo 'La tâche a bien été supprimée ! '.$link;
 } else {
-    echo "Une erreur est survenue : " . $error . " " . $link;
+    echo 'Une erreur est survenue : '.$error.' '.$link;
 }
