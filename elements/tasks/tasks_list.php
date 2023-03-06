@@ -24,7 +24,7 @@ $query = $db->query("SELECT * FROM `tasks`")->fetchAll();
           <li><strong>{$row['person_in_charge']} :</strong> {$row['task_name']} 
             <a href="#" class="mx-2 text-success"><i class="fa-solid fa-check"></i></a>
             <a href="#" class="mx-2 text-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-            <a class="mx-2 text-danger" href="delete_task.php?id={$row['id']}"><i class="fa-solid fa-trash"></i></a>
+            <a class="mx-2 text-danger" href="#" onclick="deleteAlert({$row['id']})"><i class="fa-solid fa-trash"></i></a>
           </li>
       </ul>
     </div>
