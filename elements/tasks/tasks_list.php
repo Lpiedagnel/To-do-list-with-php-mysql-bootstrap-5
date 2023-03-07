@@ -49,3 +49,11 @@ foreach ($query as $row) {
 }
 ?>
 </div>
+
+<!-- LOGIQUE -->
+<!-- 
+
+POUR CHAQUE DATE -> Créer un UL
+TROUVER CHAQUE DATE, TROUVER TOUTES LES TÂCHES CORRESPONDANTES
+
+-->
