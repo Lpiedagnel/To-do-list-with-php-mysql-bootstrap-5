@@ -21,13 +21,49 @@ foreach ($tasks as $task) {
     $tasksByDate[$date][] = $task;
 }
 
-// Render for each date
-foreach ($tasksByDate as $date => $tasks) {
-    echo '<h2>' . $date . '</h2>';
+?>
+<div class="accordion my-5">
+<?php
 
-    echo '<ul>';
-    foreach ($tasks as $task) {
-        echo '<li>' . $task['task_name'] . ' - ' . $task['person_in_charge'] . '</li>';
+$i = 0;
+foreach ($tasksByDate as $date => $tasks) {
+    $i++;
+    $dateFormat = date_format(date_create($date), 'D d M y');
+    echo 
+    "
+    <div class='accordion-item'>
+    <h2 class='accordion-header' id='heading-$i'>
+      <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#collapse-$i' aria-expanded='true' aria-controls='collapse-$i'>
+        $dateFormat
+      </button>
+    </h2>
+    <div id='collapse-$i' class='accordion-collapse collapse' aria-labelledby='heading-$i' data-bs-parent='#accordionExample'>
+      <div class='accordion-body'>
+        <ul>
+    ";
+    foreach($tasks as $task) {
+        echo 
+        "<li><strong>" . $task['person_in_charge'] . ":</strong> " . $task['task_name'];
+
+        if (isset($_SESSION['is_connected'])) {
+            echo 
+            "
+              <a href='#' class='mx-2 text-success'><i class='fa-solid fa-check'></i></a>
+              <a href='edit_task.php?id=" . $task['id'] . "' class='mx-2 text-warning'><i class='fa-solid fa-pen-to-square'></i></a>
+              <a class='mx-2 text-danger' href='#' onclick='deleteAlert(" . $task['id'] . ")'><i class='fa-solid fa-trash'></i></a>
+            ";
+        }
+
+        echo "</li>";
     }
-    echo '</ul>';
+    
+    echo 
+    "
+    </ul>
+    </div>
+  </div>
+</div>
+    ";
 }
+?>
+</div>
