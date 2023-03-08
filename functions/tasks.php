@@ -7,10 +7,17 @@ function renderTask($tasksByDate)
     $html .= "<div class='accordion my-5'>";
 
     // Create accordion item
+    
     $i = 0;
     foreach ($tasksByDate as $date => $tasks) {
-        $i++;
-        $dateFormat = date_format(date_create($date), 'D d M y');
+
+        // Format date in french with ICU library and convert the first letter of string on uppercase with ucfirst.
+        $fmt = new IntlDateFormatter('fr_FR', IntlDateFormatter::NONE, IntlDateFormatter::NONE);
+        $fmt->setPattern('EEEE dd MMMM YYYY');
+        $dateFormat = $fmt->format(new DateTime($date));
+        $dateFormat = ucfirst($dateFormat);
+
+        $i++;      
         $html .= 
         "
         <div class='accordion-item'>
