@@ -21,12 +21,18 @@ if (!$error):
   $taskStatement->execute(['id' => $id]);
   $task = $taskStatement->fetch();
 
-  // Is checked
-  if ($task['is_checked'] === 1) {
-    $isChecked = 'checked';
-  } else {
-    $isChecked = 'not_checked';
+  // Verify if the task is already checked or not.
+  function isChecked (int $previousValue, string $inputValue)
+  {
+    // Convert SQL bool to string value
+    $value = $previousValue === 1 ? 'checked' : 'not_checked';
+
+    // Compare string value to input value
+    $isChecked = $value === $inputValue ? 'selected="selected"' : null;
+
+    return $isChecked;
   }
+
   // Start tender
   ?>
 
@@ -45,9 +51,9 @@ if (!$error):
     </div>
     <div class="mb-3">
       <label for="is_checked" class="form-label">État</label>
-      <select class="form-select" name="is_checked" value="checked">
-        <option value="not_checked">Non fait</option>
-        <option value="checked">Fait</option>
+      <select class="form-select" name="is_checked">
+        <option value="not_checked" <?= isChecked($task['is_checked'], "not_checked") ?>>Non fait</option>
+        <option value="checked" <?= isChecked($task['is_checked'], "checked") ?>>Fait</option>
       </select>
     </div>
     <button type="submit" class="btn btn-primary">Créer la tâche</button>
