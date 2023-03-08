@@ -20,6 +20,13 @@ if (!$error):
   $taskStatement = $pdo->prepare($query);
   $taskStatement->execute(['id' => $id]);
   $task = $taskStatement->fetch();
+
+  // Is checked
+  if ($task['is_checked'] === 1) {
+    $isChecked = 'checked';
+  } else {
+    $isChecked = 'not_checked';
+  }
   // Start tender
   ?>
 
@@ -35,6 +42,13 @@ if (!$error):
     <div class="mb-3">
       <label for="date" class="form-label">Date</label>
       <input type="date" class="form-control" name="date" value="<?= $task['date'] ?>">
+    </div>
+    <div class="mb-3">
+      <label for="is_checked" class="form-label">État</label>
+      <select class="form-select" name="is_checked" value="checked">
+        <option value="not_checked">Non fait</option>
+        <option value="checked">Fait</option>
+      </select>
     </div>
     <button type="submit" class="btn btn-primary">Créer la tâche</button>
   </form>

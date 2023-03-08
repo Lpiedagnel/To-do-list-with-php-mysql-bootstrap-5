@@ -39,10 +39,13 @@ function renderTask($tasksByDate)
             if (isset($_SESSION['is_connected'])) {
                 $html .=
                 "
-                  <a href='#' class='mx-2 text-success'><i class='fa-solid fa-check'></i></a>
                   <a href='edit_task.php?id=" . $task['id'] . "' class='mx-2 text-warning'><i class='fa-solid fa-pen-to-square'></i></a>
                   <a class='mx-2 text-danger' href='#' onclick='deleteAlert(" . $task['id'] . ")'><i class='fa-solid fa-trash'></i></a>
                 ";
+            }
+            // Check if task is done
+            if ($task['is_checked'] === 1) {
+                $html .= "<i class='fa-solid fa-check mx-2 text-success'></i>";
             }
             // Close item
             $html .= "</li>";
