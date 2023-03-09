@@ -1,6 +1,7 @@
 <?php
-include_once('utils/db.php');
-$pdo = connect_to_database();
+include_once('libraries/database.php');
+$pdo = new Database;
+$pdo = $pdo->getPdo();
 
 // Store input into variables
 $email = htmlspecialchars($_POST['email']);

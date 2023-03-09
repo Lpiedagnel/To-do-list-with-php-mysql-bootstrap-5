@@ -1,7 +1,8 @@
 <?php
 
-include_once 'utils/db.php';
-$pdo = connect_to_database();
+include_once('libraries/database.php');
+$pdo = new Database;
+$pdo = $pdo->getPdo();
 
 // Store input into variables
 $first_name = htmlspecialchars($_POST['firstName']);
@@ -57,7 +58,7 @@ if (!$error) {
         echo '<p class="my-5">Vous êtes enregistré(e) ! <br> Vous allez être redirigé à la liste des tâches.</p>';
 
         // Back to index
-        header('Location: index.php');
+        header('Location: connexion.php');
     }
 } else {
     echo 'Une erreur s\'est produite : '.$error;

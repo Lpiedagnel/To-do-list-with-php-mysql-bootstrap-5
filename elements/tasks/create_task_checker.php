@@ -1,6 +1,8 @@
 <?php
-include_once('utils/db.php');
-$pdo = connect_to_database();
+include_once('libraries/database.php');
+$pdo = new Database;
+$pdo = $pdo->getPdo();
+
 if (isset($_POST) && (isset($_POST['task_name'])) && (isset($_POST['date']))) {
     // Get data
     $data = [
