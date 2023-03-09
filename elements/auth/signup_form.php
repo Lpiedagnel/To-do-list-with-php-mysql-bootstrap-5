@@ -32,3 +32,4 @@
   <div class="col-6 py-5">
     <p>Déjà un compte ? <a href="connexion.php">Se connecter !</a></p>
   </div>
+</div>

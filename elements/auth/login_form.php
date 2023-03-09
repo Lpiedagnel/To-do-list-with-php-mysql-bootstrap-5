@@ -15,3 +15,4 @@
   <div class="col-6 py-5">
     <p>Pas de compte ? <a href="signup.php">S'inscrire !</a></p>
   </div>
+</div>
