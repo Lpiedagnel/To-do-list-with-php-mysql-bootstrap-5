@@ -1,8 +1,7 @@
 <?php
 
-include_once('libraries/Database.php');
-$pdo = new Database;
-$pdo = $pdo->getPdo();
+include_once('libraries/models/Task.php');
+$taskModel = new Task;
 
 $error = null;
 $link = '<a href="index.php">Retournez à la liste des tâches.</a>';
@@ -18,9 +17,8 @@ if (!isset($_SESSION['is_connected'])) {
 if (!$error) {
     $id = htmlspecialchars($_GET['id']);
     // Delete to database
-    $query = "DELETE FROM tasks WHERE id = $id";
-    $statement = $pdo->prepare($query);
-    $statement->execute();
+    $taskModel->delete($id);
+
     echo 'La tâche a bien été supprimée ! '.$link;
 } else {
     echo 'Une erreur est survenue : '.$error.' '.$link;

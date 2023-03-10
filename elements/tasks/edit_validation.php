@@ -1,8 +1,7 @@
 <?php
 
-include_once('libraries/Database.php');
-$pdo = new Database;
-$pdo = $pdo->getPdo();
+include_once('libraries/models/Task.php');
+$taskModel = new Task;
 
 $error = null;
 
@@ -32,9 +31,7 @@ if (!$error) {
             'is_checked' => $isChecked
         ];
         // Store to database
-        $query = "UPDATE tasks SET person_in_charge = :person_in_charge, task_name = :task_name, date = :date, is_checked = :is_checked WHERE id = $id";
-        $statement = $pdo->prepare($query);
-        $statement->execute($data);
+        $taskModel->update($id, $data);
         header('Location: index.php');
     
     } else {

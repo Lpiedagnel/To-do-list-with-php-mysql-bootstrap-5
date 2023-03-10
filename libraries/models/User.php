@@ -11,7 +11,7 @@ class User
         $this->pdo = Database::getPdo();
     }
     
-    public function findOneByEmail (string $email) 
+    public function findOneByEmail(string $email): array
     {
 
         $result = $this->pdo->prepare("SELECT * FROM users WHERE email= :email");
@@ -21,7 +21,7 @@ class User
         return $user;
     }
 
-    public function checkByEmail (string $email)
+    public function checkByEmail(string $email): bool
     {
 
         $userWithEmail = $this->pdo->prepare('SELECT email FROM users WHERE email = :email');
@@ -31,7 +31,7 @@ class User
         return $userWithEmail;
     }
 
-    public function registerOne (array $data) 
+    public function registerOne(array $data): void
     {
 
         $query = 'INSERT INTO users (first_name, last_name, email, job, password) VALUES (:first_name, :last_name, :email, :job, :password)';

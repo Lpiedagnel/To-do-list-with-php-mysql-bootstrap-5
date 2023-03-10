@@ -1,8 +1,7 @@
 <?php
 
-include_once('libraries/Database.php');
-$pdo = new Database;
-$pdo = $pdo->getPdo();
+include_once('libraries/models/Task.php');
+$taskModel = new Task;
 
 $error = null;
 
@@ -17,10 +16,8 @@ if (!isset($_SESSION['is_connected'])) {
 if (!$error): 
   // Get data on database
   $id = $_GET['id'];
-  $query = 'SELECT * FROM tasks WHERE id = :id';
-  $taskStatement = $pdo->prepare($query);
-  $taskStatement->execute(['id' => $id]);
-  $task = $taskStatement->fetch();
+  $task = $taskModel->getOne($id);
+
 
   // Verify if the task is already checked or not.
   function isChecked (int $previousValue, string $inputValue)

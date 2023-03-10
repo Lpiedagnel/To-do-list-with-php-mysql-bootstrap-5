@@ -1,11 +1,8 @@
 <?php
-require_once('functions/tasks.php');
-include_once('libraries/Database.php');
+include_once('libraries/models/Task.php');
+$taskModel = new Task;
 
-$pdo = new Database;
-$pdo = $pdo->getPdo();
-
-$tasks = $pdo->query("SELECT * FROM `tasks`")->fetchAll();
+$tasks = $taskModel->getAll();
 
 // Create associative array
 $tasksByDate = [];

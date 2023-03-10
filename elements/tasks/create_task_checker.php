@@ -1,7 +1,6 @@
 <?php
-include_once('libraries/Database.php');
-$pdo = new Database;
-$pdo = $pdo->getPdo();
+include_once('libraries/models/Task.php');
+$taskModel = new Task;
 
 if (isset($_POST) && (isset($_POST['task_name'])) && (isset($_POST['date']))) {
     // Get data
@@ -11,9 +10,7 @@ if (isset($_POST) && (isset($_POST['task_name'])) && (isset($_POST['date']))) {
         'date' => htmlspecialchars($_POST['date'])
     ];
     // Store to database
-    $query = "INSERT INTO tasks (person_in_charge, task_name, date) VALUES (:person_in_charge, :task_name, :date)";
-    $statement = $pdo->prepare($query);
-    $statement->execute($data);
+    $taskModel->insert($data);
     echo '<p class="my-5">Votre tâche est enregistrée</p>';
 
 } else {
