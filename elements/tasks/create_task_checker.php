@@ -1,5 +1,5 @@
 <?php
-include_once('libraries/database.php');
+include_once('libraries/Database.php');
 $pdo = new Database;
 $pdo = $pdo->getPdo();
 

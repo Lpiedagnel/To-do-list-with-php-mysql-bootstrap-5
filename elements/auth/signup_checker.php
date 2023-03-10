@@ -1,8 +1,7 @@
 <?php
 
-include_once('libraries/database.php');
-$pdo = new Database;
-$pdo = $pdo->getPdo();
+include_once('libraries/models/User.php');
+$userModel = new User;
 
 // Store input into variables
 $first_name = htmlspecialchars($_POST['firstName']);
@@ -34,9 +33,7 @@ if (strlen($password) <= 4) {
 }
 
 if (!$error) {
-    $checkEmail = $pdo->prepare('SELECT email FROM users WHERE email = :email');
-    $checkEmail->bindParam(':email', $email);
-    $checkEmail->execute();
+    $checkEmail = $userModel->checkByEmail($email);
 
     if ($checkEmail->rowCount() > 0) {
         echo "L'utilisateur existe déjà.";
@@ -52,9 +49,8 @@ if (!$error) {
             'password' => $password_hash,
         ];
         // Store to database
-        $query = 'INSERT INTO users (first_name, last_name, email, job, password) VALUES (:first_name, :last_name, :email, :job, :password)';
-        $statement = $pdo->prepare($query);
-        $statement->execute($data);
+        $userModel->registerOne($data);
+
         echo '<p class="my-5">Vous êtes enregistré(e) ! <br> Vous allez être redirigé à la liste des tâches.</p>';
 
         // Back to index

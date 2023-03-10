@@ -1,7 +1,6 @@
 <?php
-include_once('libraries/database.php');
-$pdo = new Database;
-$pdo = $pdo->getPdo();
+include_once('libraries/models/User.php');
+$userModel = new User();
 
 // Store input into variables
 $email = htmlspecialchars($_POST['email']);
@@ -16,9 +15,9 @@ if (empty($email) || (empty($password))) {
 
 // Check password
 if (!$error) {
-    $result = $pdo->prepare("SELECT * FROM users WHERE email= :email");
-    $result->execute(['email' => $email]);
-    $user = $result->fetch();
+    
+    $user = $userModel->findOneByEmail($email);
+
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['first_name'] = $user['first_name'];
         $_SESSION['last_name'] = $user['last_name'];
