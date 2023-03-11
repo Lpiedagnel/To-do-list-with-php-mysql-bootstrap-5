@@ -1,16 +1,9 @@
 <?php
 
-include_once('libraries/Database.php');
+include_once('libraries/models/Model.php');
 
-class Task
+class Task extends Model
 {
-    private $pdo;
-
-    public function __construct()
-    {
-        $this->pdo = Database::getPdo();
-    }
-
     public function getAll(): array
     {
         $tasks = $this->pdo->query("SELECT * FROM `tasks`")->fetchAll();

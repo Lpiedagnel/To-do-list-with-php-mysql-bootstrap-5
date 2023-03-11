@@ -1,16 +1,9 @@
 <?php
 
-include_once('libraries/Database.php');
+include_once('libraries/models/Model.php');
 
-class User 
-{
-    private $pdo;
-
-    public function __construct()
-    {
-        $this->pdo = Database::getPdo();
-    }
-    
+class User extends Model
+{ 
     public function findOneByEmail(string $email): array
     {
 
