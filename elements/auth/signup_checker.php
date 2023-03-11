@@ -49,7 +49,7 @@ if (!$error) {
             'password' => $password_hash,
         ];
         // Store to database
-        $userModel->registerOne($data);
+        $userModel->insert($data);
 
         echo '<p class="my-5">Vous êtes enregistré(e) ! <br> Vous allez être redirigé à la liste des tâches.</p>';
 
