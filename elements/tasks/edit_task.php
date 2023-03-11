@@ -16,7 +16,7 @@ if (!isset($_SESSION['is_connected'])) {
 if (!$error): 
   // Get data on database
   $id = $_GET['id'];
-  $task = $taskModel->getOne($id);
+  $task = $taskModel->findOne($id, 'id');
 
 
   // Verify if the task is already checked or not.

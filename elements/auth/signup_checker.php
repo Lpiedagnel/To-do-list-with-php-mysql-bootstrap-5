@@ -33,9 +33,9 @@ if (strlen($password) <= 4) {
 }
 
 if (!$error) {
-    $checkEmail = $userModel->checkByEmail($email);
+    $checkEmail = $userModel->findOne($email, 'email');
 
-    if ($checkEmail->rowCount() > 0) {
+    if ($checkEmail !== false) {
         echo "L'utilisateur existe déjà.";
     } else {
         // Hash

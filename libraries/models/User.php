@@ -4,29 +4,10 @@ include_once('libraries/models/Model.php');
 
 class User extends Model
 { 
-    public function findOneByEmail(string $email): array
-    {
-
-        $result = $this->pdo->prepare("SELECT * FROM users WHERE email= :email");
-        $result->execute(['email' => $email]);
-        $user = $result->fetch();
-
-        return $user;
-    }
-
-    public function checkByEmail(string $email): bool
-    {
-
-        $userWithEmail = $this->pdo->prepare('SELECT email FROM users WHERE email = :email');
-        $userWithEmail->bindParam(':email', $email);
-        $userWithEmail->execute();
-
-        return $userWithEmail;
-    }
+    protected $table = 'users';
 
     public function registerOne(array $data): void
     {
-
         $query = 'INSERT INTO users (first_name, last_name, email, job, password) VALUES (:first_name, :last_name, :email, :job, :password)';
         $statement = $this->pdo->prepare($query);
         $statement->execute($data);

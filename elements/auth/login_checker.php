@@ -16,7 +16,7 @@ if (empty($email) || (empty($password))) {
 // Check password
 if (!$error) {
     
-    $user = $userModel->findOneByEmail($email);
+    $user = $userModel->findOne($email, 'email');
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['first_name'] = $user['first_name'];

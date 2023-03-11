@@ -4,20 +4,12 @@ include_once('libraries/models/Model.php');
 
 class Task extends Model
 {
+    protected $table = 'tasks';
+
     public function getAll(): array
     {
         $tasks = $this->pdo->query("SELECT * FROM `tasks`")->fetchAll();
         return $tasks;
-    }
-
-    public function getOne(int $id): array
-    {
-        $query = 'SELECT * FROM tasks WHERE id = :id';
-        $taskStatement = $this->pdo->prepare($query);
-        $taskStatement->execute(['id' => $id]);
-        $task = $taskStatement->fetch();
-
-        return $task;
     }
 
     public function insert(array $data): void
