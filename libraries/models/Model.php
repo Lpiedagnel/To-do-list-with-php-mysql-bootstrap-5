@@ -22,5 +22,19 @@ abstract class Model
         return $item;
     }
 
+    public function findAll(): array
+    {
+        $query = "SELECT * FROM {$this->table}";
+
+        $items = $this->pdo->query($query)->fetchAll();
+        return $items;
+    }
+
+    public function delete(int $id): void
+    {
+        $query = "DELETE FROM {$this->table} WHERE id = $id";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+    }
 
 }

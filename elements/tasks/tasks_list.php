@@ -2,7 +2,7 @@
 include_once('libraries/models/Task.php');
 $taskModel = new Task;
 
-$tasks = $taskModel->getAll();
+$tasks = $taskModel->findAll();
 
 // Create associative array
 $tasksByDate = [];
