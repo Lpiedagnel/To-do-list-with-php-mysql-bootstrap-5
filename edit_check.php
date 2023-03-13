@@ -1,19 +1,21 @@
 <?php
 
 include_once('libraries/models/Task.php');
+include_once('libraries/utils.php');
+
 $taskModel = new Task;
 
-$error = null;
+$message = null;
 
 if (!isset($_GET['id']) || (!is_numeric($_GET['id']))) {
-    $error = "La tâche n'existe pas.";
+    $message = "La tâche n'existe pas.";
 }
 
 if (!isset($_SESSION['is_connected'])) {
-    $error = 'Vous devez être connecté(e) pour modifier une tâche.';
+    $message = 'Vous devez être connecté(e) pour modifier une tâche.';
 }
 
-if (!$error) {
+if (!$message) {
     if (isset($_POST) && (isset($_POST['task_name'])) && (isset($_POST['date'])) && isset($_POST['is_checked'])) {
         $id = $_GET['id'];
         // Is checked
@@ -35,9 +37,11 @@ if (!$error) {
         header('Location: index.php');
     
     } else {
-        echo 'Aucune valeur indiquée';
+        $message = 'Aucune valeur indiquée';
     }
-} else {
-    echo "Une erreur est survenue : " . $error;
 }
 
+$title = "Vérification de la modification";
+$description = "Modification de la tâche";
+
+render('message', compact('title', 'description', 'message'));

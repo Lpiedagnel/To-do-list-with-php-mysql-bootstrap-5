@@ -1,4 +1,4 @@
-<form class="col-6 my-3" action="task_validation.php" method="POST">
+<form class="col-6 my-3" action="add_check.php" method="POST">
   <div class="mb-3">
     <label for="task_name" class="form-label">Entrez votre tâche</label>
     <input type="text" class="form-control" name="task_name" required>

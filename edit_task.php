@@ -1,18 +1,20 @@
 <?php
 include_once('libraries/models/Task.php');
+include_once('libraries/utils.php');
+
 $taskModel = new Task;
 
-$error = null;
+$message = null;
 
 if (!isset($_GET['id']) || (!is_numeric($_GET['id']))) {
-    $error = "La tâche n'existe pas.";
+    $message = "La tâche n'existe pas.";
 }
 
 if (!isset($_SESSION['is_connected'])) {
-    $error = 'Vous devez être connecté(e) pour modifier une tâche.';
+    $message = 'Vous devez être connecté(e) pour modifier une tâche.';
 }
 
-if (!$error) {
+if (!$message) {
   // Get data on database
   $id = $_GET['id'];
   $task = $taskModel->findOne($id, 'id');
@@ -30,9 +32,9 @@ if (!$error) {
     return $isChecked;
   }
 
-  // Start tender
-  render('tasks/list', compact('title', 'tasks', 'tasksByDate'));
-
-} else {
-    echo 'Une erreur est survenue : ' . $error;
+  $title = "Edition de la tâche";
+  $description = "Modifiez la tâche ici";
 }
+
+// Start render
+render('tasks/edit', compact('title', 'description', 'task'));

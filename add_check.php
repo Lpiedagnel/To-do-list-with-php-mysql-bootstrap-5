@@ -1,5 +1,7 @@
 <?php
 include_once('libraries/models/Task.php');
+include_once('libraries/utils.php');
+
 $taskModel = new Task;
 
 if (isset($_POST) && (isset($_POST['task_name'])) && (isset($_POST['date']))) {
@@ -11,8 +13,13 @@ if (isset($_POST) && (isset($_POST['task_name'])) && (isset($_POST['date']))) {
     ];
     // Store to database
     $taskModel->insert($data);
-    echo '<p class="my-5">Votre tâche est enregistrée</p>';
+    $message = "Votre tâche est enregistrée.";
 
 } else {
-    echo 'Aucune valeur indiquée';
+    $message = 'Aucune valeur indiquée';
 }
+
+$title = "Validation de la tâche";
+$description = "Validation de la tâche";
+
+render('message', compact('title', 'description', 'message'));
