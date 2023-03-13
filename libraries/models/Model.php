@@ -1,5 +1,7 @@
 <?php
 
+namespace Models;
+
 require_once('libraries/Database.php');
 
 abstract class Model
@@ -9,7 +11,7 @@ abstract class Model
 
     public function __construct()
     {
-        $this->pdo = Database::getPdo();
+        $this->pdo = \Database::getPdo();
     }
 
     public function findOne($value, string $column)
