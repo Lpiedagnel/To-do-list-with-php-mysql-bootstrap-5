@@ -1,9 +1,7 @@
 <?php 
-require_once('functions/sessions.php');
 require_once('functions/menu.php');
 require_once('functions/tasks.php');
-
-getSession(); 
+require_once('functions/sessions.php');
 
 ?>
 <!-- Header -->
@@ -18,6 +16,7 @@ getSession();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container">
@@ -35,5 +34,28 @@ getSession();
     </div>
   </div>
 </nav>
-<!-- Start container -->
+
+<!-- Content -->
 <div class="container">
+    <?= $pageContent ?>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark pt-5">
+    <div class="col-3 mx-auto bg-dark">
+        <ul>
+            <?= createMenu('link-light') ?>
+        </ul>
+    </div>
+    <p class="text-light text-center">
+      @<?= date('Y') ?></p>
+</footer>
+
+<!-- Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+</script>
+<script src="https://kit.fontawesome.com/ef8b364259.js" crossorigin="anonymous"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

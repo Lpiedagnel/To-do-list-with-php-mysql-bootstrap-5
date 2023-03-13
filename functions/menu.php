@@ -21,10 +21,10 @@ function createNavItem(string $link, string $title, string $linkClass = ''): str
 function createMenu(string $linkClass = '')
 {
     // Check if user is connected
-    if (isset($_SESSION['is_connected'])) {
+    if (isset($_SESSION['is_connected']) && ($_SESSION['is_connected'] === true)) {
         $authNavItem = createNavItem('/To-do-list-with-php-mysql-bootstrap-5/logout.php', 'Déconnexion', $linkClass);
     } else {
-        $authNavItem = createNavItem('/To-do-list-with-php-mysql-bootstrap-5/connexion.php', 'Connexion', $linkClass);
+        $authNavItem = createNavItem('/To-do-list-with-php-mysql-bootstrap-5/login.php', 'Connexion', $linkClass);
     }
     // Create menu
     return

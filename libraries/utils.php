@@ -1,12 +1,12 @@
 <?php
+session_start();
 
-function render(string $path, string $title, $description)
+function render(string $path, array $variables = [])
 {
+    extract($variables);
     ob_start();
-    require_once('templates/layout/header.php');
-    require_once('elements/' . $path . '.php');
-    require_once('templates/layout/footer.php');
+    require('templates/' . $path . '.php');
     $pageContent = ob_get_clean();
-    
-    return $pageContent;
+
+    require('templates/layout.php');
 }
