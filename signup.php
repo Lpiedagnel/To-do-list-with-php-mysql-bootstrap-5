@@ -1,6 +1,5 @@
 <?php
-
-require_once('libraries/controllers/User.php');
+require_once('libraries/autoload.php');
 
 $controller = new \Controllers\User();
 $controller->signupForm();

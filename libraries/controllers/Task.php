@@ -3,16 +3,18 @@
 namespace Controllers;
 
 require_once('libraries/utils.php');
-require_once('libraries/models/Task.php');
 require_once('functions/tasks.php');
+require_once('libraries/autoload.php');
 
-class Task {
+
+class Task extends Controller {
+
+    protected $modelName = \Models\Task::class;
+
     public function list()
     {
         // Show list
-        $model = new \Models\Task();
-
-        $tasks = $model->findAll();
+        $tasks = $this->model->findAll();
 
         // Create associative array
         $tasksByDate = [];
@@ -50,8 +52,6 @@ class Task {
 
     public function add()
     {
-        $taskModel = new \Models\Task;
-
         if (isset($_POST) && (isset($_POST['task_name'])) && (isset($_POST['date']))) {
             // Get data
             $data = [
@@ -60,7 +60,7 @@ class Task {
                 'date' => htmlspecialchars($_POST['date'])
             ];
             // Store to database
-            $taskModel->insert($data);
+            $this->model->insert($data);
             $message = "Votre tâche est enregistrée.";
         
         } else {
@@ -75,8 +75,6 @@ class Task {
 
     public function editForm()
     {
-        $taskModel = new \Models\Task;
-
         $message = null;
         
         if (!isset($_GET['id']) || (!is_numeric($_GET['id']))) {
@@ -90,7 +88,7 @@ class Task {
         if (!$message) {
           // Get data on database
           $id = $_GET['id'];
-          $task = $taskModel->findOne($id, 'id');
+          $task = $this->model->findOne($id, 'id');
         
           $title = "Edition de la tâche";
           $description = "Modifiez la tâche ici";
@@ -102,8 +100,6 @@ class Task {
 
     public function edit()
     {
-        $taskModel = new \Models\Task;
-
         $message = null;
         
         if (!isset($_GET['id']) || (!is_numeric($_GET['id']))) {
@@ -132,7 +128,7 @@ class Task {
                     'is_checked' => $isChecked
                 ];
                 // Store to database
-                $taskModel->update($id, $data);
+                $this->model->update($id, $data);
                 header('Location: index.php');
             
             } else {
@@ -148,8 +144,6 @@ class Task {
 
     public function delete()
     {
-        $taskModel = new \Models\Task;
-
         $message = null;
         $link = '<a href="index.php">Retournez à la liste des tâches.</a>';
         
@@ -164,7 +158,7 @@ class Task {
         if (!$message) {
             $id = htmlspecialchars($_GET['id']);
             // Delete to database
-            $taskModel->delete($id);
+            $this->model->delete($id);
         
             $message = "La tâche a bien été supprimée.";
         } else {

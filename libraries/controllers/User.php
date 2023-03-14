@@ -3,9 +3,12 @@
 namespace Controllers;
 
 require_once('libraries/utils.php');
-require_once('libraries/models/User.php');
+require_once('libraries/autoload.php');
 
-class User {
+
+class User extends Controller {
+
+    protected $modelName = \Models\User::class;
 
     public function signupForm()
     {
@@ -17,8 +20,6 @@ class User {
 
     public function signup()
     {
-        $userModel = new \Models\User;
-
         // Store input into variables
         $first_name = htmlspecialchars($_POST['firstName']);
         $last_name = htmlspecialchars($_POST['lastName']);
@@ -49,7 +50,7 @@ class User {
         }
 
         if (!$message) {
-            $checkEmail = $userModel->findOne($email, 'email');
+            $checkEmail = $this->model->findOne($email, 'email');
 
             if ($checkEmail !== false) {
                 $message = "L'utilisateur existe déjà.";
@@ -65,7 +66,7 @@ class User {
                     'password' => $password_hash,
                 ];
                 // Store to database
-                $userModel->insert($data);
+                $this->model->insert($data);
 
                 // Back to index
                 $message = "Enregistrement du compte réussi !";
@@ -88,8 +89,6 @@ class User {
 
     public function login()
     {
-        $userModel = new \Models\User();
-
         // Store input into variables
         $email = htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['password']);
@@ -104,7 +103,7 @@ class User {
         // Check password
         if (!$message) {
             
-            $user = $userModel->findOne($email, 'email');
+            $user = $this->model->findOne($email, 'email');
         
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['first_name'] = $user['first_name'];
