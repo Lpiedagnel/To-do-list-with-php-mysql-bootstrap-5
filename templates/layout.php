@@ -1,9 +1,4 @@
-<?php 
-require_once('functions/menu.php');
-require_once('functions/tasks.php');
-require_once('functions/sessions.php');
 
-?>
 <!-- Header -->
 <!doctype html>
 <html lang="fr">
@@ -26,10 +21,10 @@ require_once('functions/sessions.php');
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <?= createMenu('nav-link') ?>
+        <?= \Navigation::createMenu('nav-link') ?>
       </ul>
       <span class="navbar-text">
-        <?= getName() ?>
+        <?= \Session::getName() ?>
       </span>
     </div>
   </div>
@@ -44,7 +39,7 @@ require_once('functions/sessions.php');
 <footer class="bg-dark pt-5">
     <div class="col-3 mx-auto bg-dark">
         <ul>
-            <?= createMenu('link-light') ?>
+            <?= \Navigation::createMenu('link-light') ?>
         </ul>
     </div>
     <p class="text-light text-center">

@@ -2,8 +2,6 @@
 
 namespace Controllers;
 
-require_once('libraries/utils.php');
-require_once('functions/tasks.php');
 require_once('libraries/autoload.php');
 
 
@@ -37,17 +35,15 @@ class Task extends Controller {
         $title = 'Accueil';
         $description = 'Bienvenue dans la To-Do-List ! Un site très moderne conçu avec Bootstrap 5 !';
 
-        render('tasks/list', compact('title', 'description', 'tasks', 'tasksByDate'));
+        \Renderer::render('tasks/list', compact('title', 'description', 'tasks', 'tasksByDate'));
     }
 
     public function addForm()
     {
-        require_once('libraries/utils.php');
-
         $title = 'Ajouter une tâche !';
         $description = 'Ajouter une tâche dans la To-Do-List !';
 
-        render('tasks/add', compact('title', 'description'));
+        \Renderer::render('tasks/add', compact('title', 'description'));
     }
 
     public function add()
@@ -70,7 +66,7 @@ class Task extends Controller {
         $title = "Validation de la tâche";
         $description = "Validation de la tâche";
         
-        render('message', compact('title', 'description', 'message'));
+        \Renderer::render('message', compact('title', 'description', 'message'));
     }
 
     public function editForm()
@@ -95,7 +91,7 @@ class Task extends Controller {
         }
         
         // Start render
-        render('tasks/edit', compact('title', 'description', 'task'));
+        \Renderer::render('tasks/edit', compact('title', 'description', 'task'));
     }
 
     public function edit()
@@ -139,7 +135,7 @@ class Task extends Controller {
         $title = "Vérification de la modification";
         $description = "Modification de la tâche";
         
-        render('message', compact('title', 'description', 'message'));
+        \Renderer::render('message', compact('title', 'description', 'message'));
     }
 
     public function delete()
@@ -168,6 +164,6 @@ class Task extends Controller {
         $title = "Suppression d'une tâche";
         $description = "Une tâche a été supprimée.";
         
-        render('message', compact('title', 'description', 'message'));
+        \Renderer::render('message', compact('title', 'description', 'message'));
     }
 }

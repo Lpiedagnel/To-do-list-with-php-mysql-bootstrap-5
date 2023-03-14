@@ -2,7 +2,6 @@
 
 namespace Controllers;
 
-require_once('libraries/utils.php');
 require_once('libraries/autoload.php');
 
 
@@ -15,7 +14,7 @@ class User extends Controller {
         $title = 'S\'inscrire';
         $description = 'S\'inscrire à la To-do-List pour voir et ajouter des tâches !';
 
-        render('auth/signup_form',compact('title', 'description'));
+        \Renderer::render('auth/signup_form',compact('title', 'description'));
     }
 
     public function signup()
@@ -76,7 +75,7 @@ class User extends Controller {
         $title = 'Enregistrement';
         $description = 'Enregistrement du compte. ';
 
-        render('message', compact('title', 'description', 'message'));
+        \Renderer::render('message', compact('title', 'description', 'message'));
     }
 
     public function loginForm()
@@ -84,7 +83,7 @@ class User extends Controller {
         $title = 'Connexion';
         $description = 'Connectez-vous pour voir la To-do-list !';
 
-        render('auth/login_form', compact('title', 'description',));
+        \Renderer::render('auth/login_form', compact('title', 'description',));
     }
 
     public function login()
@@ -120,7 +119,7 @@ class User extends Controller {
         $title = 'Connexion';
         $description = 'Vérification de la connexion';
         
-        render('message', compact('title', 'description', 'message'));
+        \Renderer::render('message', compact('title', 'description', 'message'));
     }
 
     public function logout()
@@ -132,6 +131,6 @@ class User extends Controller {
 
         $message = "Vous avez été déconnecté.";
 
-        $pageContent = render('message', compact('title', 'description', 'message'));
+        $pageContent = \Renderer::render('message', compact('title', 'description', 'message'));
     }
 }

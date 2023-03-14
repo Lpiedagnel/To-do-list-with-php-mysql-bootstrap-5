@@ -15,8 +15,8 @@
     <div class="mb-3">
       <label for="is_checked" class="form-label">État</label>
       <select class="form-select" name="is_checked">
-        <option value="not_checked" <?= isChecked($task['is_checked'], "not_checked") ?>>Non fait</option>
-        <option value="checked" <?= isChecked($task['is_checked'], "checked") ?>>Fait</option>
+        <option value="not_checked" <?= \Renderer::isChecked($task['is_checked'], "not_checked") ?>>Non fait</option>
+        <option value="checked" <?= \Renderer::isChecked($task['is_checked'], "checked") ?>>Fait</option>
       </select>
     </div>
     <button type="submit" class="btn btn-primary">Créer la tâche</button>
