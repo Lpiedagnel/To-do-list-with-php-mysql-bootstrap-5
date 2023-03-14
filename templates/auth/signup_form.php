@@ -1,5 +1,5 @@
 <div class="row">
-  <form class="my-3 col-6" action="signup_check.php" method="POST" id="register-form">
+  <form class="my-3 col-6" action="index.php?controller=user&action=signup" method="POST" id="register-form">
     <div class="mb-3">
       <label for="lastName" class="form-label">Nom</label>
       <input type="text" name="lastName" class="form-control" required>
@@ -30,6 +30,6 @@
 </div>
 <div class="row">
   <div class="col-6 py-5">
-    <p>Déjà un compte ? <a href="login.php">Se connecter !</a></p>
+    <p>Déjà un compte ? <a href="index.php?controller=user&action=loginform">Se connecter !</a></p>
   </div>
 </div>

@@ -21,6 +21,6 @@ registerForm.addEventListener('submit', function(event) {
 // Delete button alert
 function deleteAlert(id) {
     if (window.confirm('Êtes-vous sûr(e) de supprimer cette tâche ?')) {
-        window.location.href= `delete_task.php?id=${id}`
+        window.location.href= `index.php?controller=task&action=delete&id=${id}`
     }
 }

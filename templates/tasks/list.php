@@ -38,7 +38,7 @@ $html = null;
             if (isset($_SESSION['is_connected'])) {
                 $html .=
                 "
-                  <a href='edit_task.php?id=" . $task['id'] . "' class='mx-2 text-warning'><i class='fa-solid fa-pen-to-square'></i></a>
+                  <a href='index.php?controller=task&action=editform&id=" . $task['id'] . "' class='mx-2 text-warning'><i class='fa-solid fa-pen-to-square'></i></a>
                   <a class='mx-2 text-danger' href='#' onclick='deleteAlert(" . $task['id'] . ")'><i class='fa-solid fa-trash'></i></a>
                 ";
             }
