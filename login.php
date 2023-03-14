@@ -1,7 +1,5 @@
 <?php
-require_once('libraries/utils.php');
+require_once('libraries/controllers/User.php');
 
-$title = 'Connexion';
-$description = 'Connectez-vous pour voir la To-do-list !';
-
-render('auth/login_form', compact('title', 'description',));
+$controller = new \Controllers\User();
+$controller->loginForm();

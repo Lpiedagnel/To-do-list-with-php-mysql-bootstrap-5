@@ -1,7 +1,6 @@
 <?php
-require_once('libraries/utils.php');
 
-$title = 'Ajouter une tâche !';
-$description = 'Ajouter une tâche dans la To-Do-List !';
+require_once('libraries/controllers/Task.php');
 
-render('tasks/add', compact('title', 'description'));
+$controller = new \Controllers\Task();
+$controller->addForm();

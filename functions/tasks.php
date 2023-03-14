@@ -64,3 +64,15 @@ function renderTask($tasksByDate)
 
     return $html;
 }
+
+// Verify if the task is already checked or not.
+function isChecked (int $previousValue, string $inputValue)
+{
+    // Convert SQL bool to string value
+    $value = $previousValue === 1 ? 'checked' : 'not_checked';
+
+    // Compare string value to input value
+    $isChecked = $value === $inputValue ? 'selected="selected"' : null;
+
+    return $isChecked;
+}
